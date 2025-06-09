@@ -90,16 +90,13 @@ def normalize(X, axis=-1, order=2):
 
 
 def standardize(X):
-    """ Standardize the dataset X """
     X_std = X
     mean = X.mean(axis=0)
     std = X.std(axis=0)
     for col in range(np.shape(X)[1]):
         if std[col]:
-            X_std[:, col] = (X_std[:, col] - mean[col]) / std[col]
-    # X_std = (X - X.mean(axis=0)) / X.std(axis=0)
+            X_std[:,col] = (X_std[:, col]-mean[col]) / std[col]
     return X_std
-
 
 def train_test_split(X, y, test_size=0.5, shuffle=True, seed=None):
     """ Split the data into train and test sets """
